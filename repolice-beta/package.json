@@ -1,0 +1,29 @@
+{
+  "name": "repolice-beta",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "vitest",
+    "build": "tsc",
+    "check": "tsc --noEmit",
+    "start": "node src/index.ts",
+    "publish": "npm publish"
+  },
+  "bin": {
+    "repolice": "bin/cli.cjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.6.5",
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.14"
+  },
+  "dependencies": {
+    "zod": "^4.1.13"
+  }
+}
