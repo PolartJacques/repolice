@@ -15,7 +15,7 @@
     "repolice": "bin/cli.cjs"
   },
   "keywords": [],
-  "author": "",
+  "author": "jacques_polart",
   "license": "ISC",
   "packageManager": "pnpm@10.6.5",
   "devDependencies": {
