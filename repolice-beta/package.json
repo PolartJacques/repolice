@@ -1,6 +1,6 @@
 {
   "name": "repolice-beta",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "index.js",
   "type": "module",
@@ -8,8 +8,7 @@
     "test": "vitest",
     "build": "tsc",
     "check": "tsc --noEmit",
-    "start": "node src/index.ts",
-    "publish": "npm publish"
+    "start": "node src/index.ts"
   },
   "bin": {
     "repolice": "bin/cli.cjs"
