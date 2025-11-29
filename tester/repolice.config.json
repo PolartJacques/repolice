@@ -1,0 +1,41 @@
+{
+  "repos": [
+    {
+      "gitUrl": "https://github.com/PolartJacques/easy-monad.git",
+      "projects": [
+        {
+          "name": "easy-monad",
+          "path": "./",
+          "rules": ["package.json at root", "tsconfig.json at root"]
+        }
+      ]
+    },
+    {
+      "gitUrl": "https://github.com/PolartJacques/config-guru.git",
+      "projects": [
+        {
+          "name": "config-guru",
+          "path": "./",
+          "rules": []
+        }
+      ]
+    }
+  ],
+  "rules": {
+    "package.json at root": [
+      {
+        "filePath": "package.json"
+      }
+    ],
+    "tsconfig.json at root": [
+      {
+        "filePath": "tsconfig.json"
+      }
+    ],
+    "breaking-rule": [
+      {
+        "filePath": "toto.tata"
+      }
+    ]
+  }
+}
