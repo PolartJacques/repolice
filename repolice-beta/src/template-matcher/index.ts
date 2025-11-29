@@ -1,1 +1,1 @@
-export { validateFile } from "./validateFile.js";
+export { doesFileMatchTemplates } from "./validateFile.js";

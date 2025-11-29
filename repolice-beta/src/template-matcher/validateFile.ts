@@ -26,7 +26,10 @@ const toTemplateValidator = (template: string): ITemplateValidator =>
  * @param templates : the templates to match
  * @returns true or false wether the file validate all template or not
  */
-export function validateFile(file: string, templates: string[]): boolean {
+export function doesFileMatchTemplates(
+  file: string,
+  templates: string[]
+): boolean {
   const validators = templates.map(toTemplateValidator);
   const fileTokens = tokenizer.tokenizeFile(file);
 
