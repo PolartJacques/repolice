@@ -5,6 +5,7 @@ import fs from "node:fs";
 import { loadConfig } from "./repolice-config.js";
 import chalk from "chalk";
 import path from "node:path";
+import { validateFile } from "./template-matcher/validateFile.js";
 
 const execAsync = promisify(exec);
 
@@ -95,12 +96,25 @@ async function main() {
         }
 
         for (const assertion of rule) {
-          if (!fs.existsSync(path.join(repoPath, assertion.filePath))) {
+          const filePath = path.join(repoPath, assertion.filePath);
+          if (!fs.existsSync(filePath)) {
             errors.push({
               projectName: project.name,
               ruleName,
               issue: `file ${assertion.filePath} not found`,
             });
+            continue;
+          }
+
+          if (assertion.templates) {
+            const file = fs.readFileSync(filePath, "utf8");
+            if (!validateFile(file, assertion.templates)) {
+              errors.push({
+                projectName: project.name,
+                ruleName,
+                issue: "templates not matched",
+              });
+            }
           }
         }
       }

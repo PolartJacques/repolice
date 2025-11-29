@@ -16,7 +16,7 @@
         {
           "name": "config-guru",
           "path": "./",
-          "rules": []
+          "rules": ["breaking-rule"]
         }
       ]
     }
@@ -24,7 +24,8 @@
   "rules": {
     "package.json at root": [
       {
-        "filePath": "package.json"
+        "filePath": "package.json",
+        "templates": ["hello world"]
       }
     ],
     "tsconfig.json at root": [
