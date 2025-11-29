@@ -6,7 +6,7 @@
         {
           "name": "easy-monad",
           "path": "./",
-          "rules": ["package.json at root", "tsconfig.json at root"]
+          "rules": []
         }
       ]
     },
@@ -16,27 +16,9 @@
         {
           "name": "config-guru",
           "path": "./",
-          "rules": ["breaking-rule"]
+          "rules": ["yet-another-rule"]
         }
       ]
     }
-  ],
-  "rules": {
-    "package.json at root": [
-      {
-        "filePath": "package.json",
-        "templates": ["hello world"]
-      }
-    ],
-    "tsconfig.json at root": [
-      {
-        "filePath": "tsconfig.json"
-      }
-    ],
-    "breaking-rule": [
-      {
-        "filePath": "toto.tata"
-      }
-    ]
-  }
+  ]
 }

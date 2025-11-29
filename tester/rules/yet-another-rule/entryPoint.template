@@ -1,0 +1,16 @@
+function tryReadFile(path: string): string | undefined {
+    try {
+        return fs.readFileSync(path, { encoding: "utf-8" });
+    } catch {
+        return undefined;
+    }
+}
+
+---
+
+const tsconfig = JSON.parse(removeComments(tsConfigFile));
+const compilerOptions = tsconfig.compilerOptions ?? {};
+
+---
+
+console.log("hello world");

@@ -15,14 +15,8 @@ const repoShema = z.object({
   projects: z.array(projectShema),
 });
 
-const assertionShema = z.object({
-  filePath: z.string(),
-  templates: z.array(z.string()).optional(),
-});
-
 const configShema = z.object({
   repos: z.array(repoShema),
-  rules: z.record(z.string(), z.array(assertionShema)),
 });
 
 type Config = z.infer<typeof configShema>;
