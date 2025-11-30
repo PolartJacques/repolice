@@ -16,9 +16,13 @@
         {
           "name": "config-guru",
           "path": "./",
-          "rules": ["yet-another-rule"]
+          "tags": ["test"],
+          "rules": []
         }
       ]
     }
-  ]
+  ],
+  "tags": {
+    "test": ["yet-another-rule"]
+  }
 }

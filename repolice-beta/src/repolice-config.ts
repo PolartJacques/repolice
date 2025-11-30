@@ -7,7 +7,8 @@ const CONFIG_PATH = "repolice.config.json";
 const projectShema = z.object({
   name: z.string(),
   path: z.string(),
-  rules: z.array(z.string()),
+  rules: z.array(z.string()).optional(),
+  tags: z.array(z.string()).optional(),
 });
 
 const repoShema = z.object({
@@ -17,9 +18,11 @@ const repoShema = z.object({
 
 const configShema = z.object({
   repos: z.array(repoShema),
+  tags: z.record(z.string(), z.array(z.string())).optional(),
 });
 
-type Config = z.infer<typeof configShema>;
+export type Config = z.infer<typeof configShema>;
+export type Project = z.infer<typeof projectShema>;
 
 export function loadConfig(): Config {
   if (!fs.existsSync(CONFIG_PATH)) {

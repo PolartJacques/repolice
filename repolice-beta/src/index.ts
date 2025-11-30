@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import { readFile } from "node:fs/promises";
-import { loadConfig } from "./repolice-config.js";
+import { loadConfig, type Config, type Project } from "./repolice-config.js";
 import chalk from "chalk";
 import path from "node:path";
 import { doesFileMatchTemplates } from "./template-matcher/validateFile.js";
@@ -8,6 +8,23 @@ import { tryCloneRepoAscyn } from "./github.js";
 import { loadRule } from "./rule.js";
 
 type Error = { projectName: string; ruleName: string; issue: string };
+
+function getRulesOfProject(project: Project, config: Config): string[] {
+  const rulesFromTags =
+    project.tags?.flatMap((tag) => {
+      const rules = config.tags?.[tag];
+      if (!rules) {
+        console.log(
+          chalk.bgRed.black(
+            `tags ${tag} in project ${project.name} not found in tags definition in config`
+          )
+        );
+        return [];
+      }
+      return rules;
+    }) ?? [];
+  return Array.from(new Set([...rulesFromTags, ...(project.rules ?? [])]));
+}
 
 async function main() {
   const config = loadConfig();
@@ -33,7 +50,9 @@ async function main() {
         continue;
       }
 
-      for (const ruleName of project.rules) {
+      const rules = getRulesOfProject(project, config);
+
+      for (const ruleName of rules) {
         const onError = (issue: string) => {
           errors.push({
             projectName: project.name,
